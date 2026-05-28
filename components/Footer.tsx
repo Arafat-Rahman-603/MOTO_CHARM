@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { Zap, Facebook, Mail, Phone, MapPin } from "lucide-react";
+import { Zap, Mail, Phone, MapPin } from "lucide-react";
+import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 
 const footerLinks = {
   Products: [
@@ -10,6 +11,7 @@ const footerLinks = {
     { label: "Custom Keyrings", href: "/products?category=keyrings" },
     { label: "All Products", href: "/products" },
   ],
+
   Company: [
     { label: "About Us", href: "/about" },
     { label: "Custom Order", href: "/custom-order" },
@@ -26,13 +28,14 @@ export default function Footer() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-          
+
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
             <Link href="/" className="flex items-center gap-2 mb-6 group">
               <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#6c63ff] to-[#06b6d4] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                 <Zap className="w-4 h-4 text-white" />
               </div>
+
               <span
                 className="text-xl font-black tracking-widest gradient-text"
                 style={{ fontFamily: "var(--font-orbitron)" }}
@@ -42,15 +45,28 @@ export default function Footer() {
             </Link>
 
             <p className="text-[#64748b] text-sm leading-relaxed max-w-xs mb-8">
-              Premium custom stickers, personalized keyrings, and cutting-edge smart watches.
-              Your vision, our craft.
+              Premium custom stickers, personalized keyrings, and cutting-edge
+              smart watches. Your vision, our craft.
             </p>
 
+            {/* Social Icons */}
             <div className="flex gap-4">
               {[
-                { Icon: Mail, href: "https://instagram.com", label: "Instagram" },
-                { Icon: Facebook, href: "https://facebook.com", label: "Facebook" },
-                { Icon: Mail, href: "https://twitter.com", label: "Twitter" },
+                {
+                  Icon: FaInstagram,
+                  href: "https://instagram.com",
+                  label: "Instagram",
+                },
+                {
+                  Icon: FaFacebookF,
+                  href: "https://facebook.com",
+                  label: "Facebook",
+                },
+                {
+                  Icon: FaTwitter,
+                  href: "https://twitter.com",
+                  label: "Twitter",
+                },
               ].map(({ Icon, href, label }) => (
                 <a
                   key={label}
@@ -66,12 +82,13 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Links */}
+          {/* Footer Links */}
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title}>
               <h4 className="text-white font-bold text-xs mb-6 tracking-[0.2em] uppercase">
                 {title}
               </h4>
+
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link.href}>
@@ -89,35 +106,41 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Contact info bar */}
+        {/* Bottom bar */}
         <div className="border-t border-[#1a1a30] pt-10 mt-10 flex flex-col lg:flex-row items-center justify-between gap-8">
           <div className="flex flex-wrap justify-center lg:justify-start gap-8 text-[#64748b] text-sm">
+
             <span className="flex items-center gap-3 group cursor-pointer hover:text-white transition-colors">
               <div className="w-8 h-8 rounded-lg bg-[#6c63ff]/10 flex items-center justify-center group-hover:bg-[#6c63ff]/20 transition-colors">
                 <Mail className="w-4 h-4 text-[#6c63ff]" />
               </div>
+
               hello@motocharm.com
             </span>
+
             <span className="flex items-center gap-3 group cursor-pointer hover:text-white transition-colors">
               <div className="w-8 h-8 rounded-lg bg-[#6c63ff]/10 flex items-center justify-center group-hover:bg-[#6c63ff]/20 transition-colors">
                 <Phone className="w-4 h-4 text-[#6c63ff]" />
               </div>
+
               +1 (555) 123-4567
             </span>
+
             <span className="flex items-center gap-3 group cursor-pointer hover:text-white transition-colors">
               <div className="w-8 h-8 rounded-lg bg-[#6c63ff]/10 flex items-center justify-center group-hover:bg-[#6c63ff]/20 transition-colors">
                 <MapPin className="w-4 h-4 text-[#6c63ff]" />
               </div>
+
               Dhaka, Bangladesh
             </span>
           </div>
 
           <p className="text-[#4b5563] text-xs font-medium">
-            © {new Date().getFullYear()} <span className="text-[#64748b]">MotoCharm</span>. All rights reserved.
+            © {new Date().getFullYear()}{" "}
+            <span className="text-[#64748b]">MotoCharm</span>. All rights reserved.
           </p>
         </div>
       </div>
     </footer>
   );
 }
-
